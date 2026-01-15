@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>RobotOps 상담 요청</title>
+</head>
+<body>
+  <h1>RobotOps 상담 요청</h1>
+  <form id="contact-form">
+    <div>
+      <label>이름</label>
+      <input type="text" id="name" required />
+    </div>
+    <div>
+      <label>전화번호</label>
+      <input type="text" id="phone" required />
+    </div>
+    <div>
+      <label>문의 내용</label>
+      <textarea id="message" required></textarea>
+    </div>
+    <button type="submit">보내기</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value,
+      };
+
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error("저장 실패");
+        result.textContent = "상담 요청이 접수되었습니다.";
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        result.textContent = "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+      }
+    });
+  </script>
+</body>
+</html>
