@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RobotOps 관리자</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 900px; margin: auto; }
+    h2 { margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; font-size: 14px; }
+    th { background: #eee; }
+    .filter { margin-top: 8px; font-size: 14px; }
+    .token-box { width: 400px; padding: 6px; }
+    button { cursor: pointer; padding: 6px 10px; }
+  </style>
+</head>
+<body>
+  <h2>📋 RobotOps 상담 신청 목록</h2>
+
+  <label>관리자 토큰</label><br>
+  <input id="token" class="token-box" placeholder="Bearer 토큰 입력" />
+  <button onclick="loadData()">조회</button>
+
+  <div class="filter">
+    <label>form_type 분류</label>
+    <select id="filter" onchange="loadData()">
+      <option value="">전체보기</option>
+      <option value="robot">robot 상담</option>
+      <option value="education">교육 상담</option>
+    </select>
+  </div>
+
+  <table id="data-table" style="display:none;">
+    <thead>
+      <tr>
+        <th>시간</th>
+        <th>종류</th>
+        <th>이름</th>
+        <th>연락처</th>
+        <th>내용</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <p id="msg"></p>
+
+<script>
+async function loadData() {
+  const token = document.getElementById('token').value.trim();
+  const filter = document.getElementById('filter').value;
+  const msg = document.getElementById('msg');
+  const table = document.getElementById('data-table');
+  const tbody = table.querySelector("tbody");
+
+  msg.textContent = "";
+  table.style.display = "none";
+  tbody.innerHTML = "";
+
+  if (!token) {
+    msg.textContent = "⚠️ 토큰을 입력해 주세요.";
+    return;
+  }
+
+  const url = filter ? `/api/contact?type=${filter}` : `/api/contact`;
+
+  try {
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) {
+      msg.textContent = "❌ 인증 실패 또는 요청 오류";
+      return;
+    }
+
+    const data = await res.json();
+    if (!Array.isArray(data)) {
+      msg.textContent = "❌ 데이터 형식 오류";
+      return;
+    }
+
+    if (data.length === 0) {
+      msg.textContent = "🔍 데이터 없음";
+      return;
+    }
+
+    data.forEach(item => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.created_at ? item.created_at.replace("T"," ").replace("Z","") : ""}</td>
+        <td>${item.form_type || ""}</td>
+        <td>${item.name || ""}</td>
+        <td>${item.phone || ""}</td>
+        <td>${item.message || ""}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    table.style.display = "table";
+  } catch (err) {
+    msg.textContent = "🌐 네트워크 오류";
+  }
+}
+</script>
+</body>
+</html>
