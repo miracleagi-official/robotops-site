@@ -1,75 +1,560 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>로봇 도입 상담 신청</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; max-width: 480px; margin: auto; }
-    label { display: block; margin-top: 12px; }
-    input, textarea { width: 100%; padding: 8px; font-size: 15px; margin-top: 4px; }
-    button { margin-top: 16px; padding: 12px; width: 100%; font-size: 16px; cursor: pointer; }
-    .msg { margin-top: 20px; font-weight: bold; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로봇 시스템 전환 컨설팅 | 무료 진단 | 정부지원 연계</title>
+  <meta name="description" content="로봇을 팔지 않습니다. 업무 구조를 바꿉니다. 설계부터 운영까지 책임지는 시스템 전환 컨설팅. 무료 진단, 정부지원 연계.">
+  <meta name="keywords" content="로봇 도입, 자동화 컨설팅, 정부지원, 스마트공장, 시스템 전환">
+  <link rel="canonical" href="https://example.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="로봇 시스템 전환 컨설팅">
+  <meta property="og:description" content="로봇을 팔지 않습니다. 업무 구조를 바꿉니다.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
-  <h2>로봇 도입 상담 신청</h2>
+  <!-- Header Include -->
+  <div id="header"></div>
 
-  <form id="form">
-    <input type="hidden" id="form_type" value="robot" />
+  <!-- Main Content -->
+  <main>
 
-    <label>이름</label>
-    <input type="text" id="name" required />
+    <!-- ========================================
+         Section 1: Hero
+         ======================================== -->
+    <section id="hero" class="section-hero">
+      <div class="container">
+        <div class="text-container">
+          <h1 class="title"><span class="highlight">AI 로봇 및 시스템 환경을</span><br>설계해 드립니다.</h1>
+          <p class="subtitle">설계부터 구축, 운영까지<br>정부지원 연계까지 한 번에 해결합니다.</p>
+          <p class="desc">무료 진단으로 시작하세요.<br>의무 계약 없이, 가능성만 확인합니다.</p>
+        </div>
 
-    <label>연락처</label>
-    <input type="text" id="phone" placeholder="01012345678" required />
+        <div class="content-container">
+          <div class="cta-group">
+            <a href="#cta" class="btn primary">무료 진단 신청하기</a>
+            <a href="#cta" class="btn secondary">정부지원 가능 여부 확인</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <label>문의 내용</label>
-    <textarea id="message" rows="4" required></textarea>
+    <!-- ========================================
+         Section 2: Problem
+         ======================================== -->
+    <section id="problem" class="section-problem">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">이런 고민, 혼자 하고 계셨습니까?</h2>
+          <p class="desc">자동화가 필요한 건 압니다.<br>그런데 시작하려니 막막합니다.</p>
+        </div>
 
-    <button type="submit">신청하기</button>
-  </form>
+        <div class="content-container">
+          <div class="grid">
+            <div class="card">
+              <div class="icon">😰</div>
+              <h3 class="cardtitle">효과가 있을지 모르겠다</h3>
+              <p class="carddesc">비싼 돈 들여서 효과 없으면 어떡하지</p>
+            </div>
 
-  <div class="msg" id="msg"></div>
+            <div class="card">
+              <div class="icon">😓</div>
+              <h3 class="cardtitle">실패하면 내 책임이다</h3>
+              <p class="carddesc">내가 추천해서 망하면 신뢰 잃는다</p>
+            </div>
 
-<script>
-const form = document.getElementById('form');
-const msg = document.getElementById('msg');
+            <div class="card">
+              <div class="icon">💸</div>
+              <h3 class="cardtitle">비용이 부담된다</h3>
+              <p class="carddesc">수천만 원은 감당이 안 된다</p>
+            </div>
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  msg.textContent = '';
+            <div class="card">
+              <div class="icon">😕</div>
+              <h3 class="cardtitle">정부지원은 복잡해 보인다</h3>
+              <p class="carddesc">있다는 건 아는데, 신청할 엄두가 안 난다</p>
+            </div>
 
-  const payload = {
-    form_type: document.getElementById('form_type').value,
-    name: document.getElementById('name').value.trim(),
-    phone: document.getElementById('phone').value.trim(),
-    message: document.getElementById('message').value.trim()
-  };
+            <div class="card">
+              <div class="icon">🤔</div>
+              <h3 class="cardtitle">설치 후가 더 걱정이다</h3>
+              <p class="carddesc">고장 나면 누가 고쳐주지?</p>
+            </div>
 
-  if (!payload.name || !payload.phone || !payload.message) {
-    msg.textContent = '모든 항목을 입력해 주세요.';
-    return;
-  }
+            <div class="card">
+              <div class="icon">😶</div>
+              <h3 class="cardtitle">로봇 회사마다 말이 다르다</h3>
+              <p class="carddesc">누구 말을 믿어야 하는지 모르겠다</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    <!-- ========================================
+         Section 3: Urgency (New)
+         ======================================== -->
+    <section id="urgency" class="section-urgency">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">고민하는 동안,<br><span class="highlight">경쟁사는 이미 바꿨습니다.</span></h2>
+          <p class="desc">정부지원 예산은 한정되어 있습니다.<br>올해 예산이 소진되면, 내년까지 기다려야 합니다.</p>
+        </div>
 
-    const data = await res.json();
-    if (data.ok) {
-      msg.textContent = '신청이 정상적으로 접수되었습니다.';
-      form.reset();
-    } else {
-      msg.textContent = '오류가 발생했습니다: ' + (data.error || '');
-    }
-  } catch (err) {
-    msg.textContent = '네트워크 오류가 발생했습니다.';
-  }
-});
-</script>
+        <div class="content-container">
+          <div class="urgency-grid">
+            <div class="urgency-card">
+              <div class="icon">⏰</div>
+              <p>정부지원 예산은 선착순입니다.<br><strong>늦으면 못 받습니다.</strong></p>
+            </div>
+
+            <div class="urgency-card">
+              <div class="icon">🏭</div>
+              <p>경쟁사가 먼저 자동화하면,<br><strong>원가 경쟁에서 밀립니다.</strong></p>
+            </div>
+
+            <div class="urgency-card">
+              <div class="icon">👷</div>
+              <p>인력난은 더 심해집니다.<br><strong>지금 안 바꾸면 나중엔 더 힘듭니다.</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         Section 4: Solution
+         ======================================== -->
+    <section id="solution" class="section-solution">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">로봇이 아니라,<br>구조를 바꾸는 컨설팅입니다.</h2>
+          <p class="desc">장비를 팔지 않습니다.<br>귀사에 맞는 시스템을 설계하고, 끝까지 책임집니다.</p>
+        </div>
+
+        <div class="content-container">
+          <div class="solution-grid">
+            <div class="solution-item">
+              <div class="icon">🔍</div>
+              <h3 class="itemtitle">구조 설계</h3>
+              <p class="itemdesc">업무 흐름 분석 → 자동화 적용 → 프로세스 재설계<br>특정 장비를 밀지 않고, 귀사 구조에 맞는 방식을 찾습니다.</p>
+            </div>
+
+            <div class="solution-item">
+              <div class="icon">💰</div>
+              <h3 class="itemtitle">정부지원 연계</h3>
+              <p class="itemdesc">적합한 지원사업 매칭 → 서류 작성 → 심사 대응<br>복잡한 신청 절차, 저희가 대신 처리합니다.</p>
+            </div>
+
+            <div class="solution-item">
+              <div class="icon">🔧</div>
+              <h3 class="itemtitle">운영 책임</h3>
+              <p class="itemdesc">구축 후 관제 → 유지관리 → 지속 개선<br>설치하고 끝이 아니라, 돌아가는 것까지 책임집니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         Section 5: Process
+         ======================================== -->
+    <section id="process" class="section-process">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">5단계로 진행됩니다.</h2>
+          <p class="desc">진단부터 운영까지,<br><strong>실제로 돌아가는 것</strong>까지 설계해 드립니다.</p>
+        </div>
+
+        <div class="content-container">
+          <div class="process-list">
+            <div class="process-item">
+              <div class="number">1</div>
+              <div class="process-content">
+                <h3 class="processtitle">진단</h3>
+                <p class="processdesc">현장 방문, 업무 흐름 파악, 자동화 가능 영역 분석</p>
+              </div>
+            </div>
+
+            <div class="process-item">
+              <div class="number">2</div>
+              <div class="process-content">
+                <h3 class="processtitle">설계</h3>
+                <p class="processdesc">도입 범위 확정, 장비 선정, 전환 로드맵 수립</p>
+              </div>
+            </div>
+
+            <div class="process-item">
+              <div class="number">3</div>
+              <div class="process-content">
+                <h3 class="processtitle">예산</h3>
+                <p class="processdesc">정부지원 매칭, 비용 구조 설계, 자부담 최소화</p>
+              </div>
+            </div>
+
+            <div class="process-item">
+              <div class="number">4</div>
+              <div class="process-content">
+                <h3 class="processtitle">구축</h3>
+                <p class="processdesc">시스템 설치, 기존 환경 연동, 테스트 운영</p>
+              </div>
+            </div>
+
+            <div class="process-item">
+              <div class="number">5</div>
+              <div class="process-content">
+                <h3 class="processtitle">운영</h3>
+                <p class="processdesc">정기 점검, 장애 대응, 지속적 개선</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         Section 6: Differentiation + CTA 1
+         ======================================== -->
+    <section id="diff" class="section-diff">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">일반 로봇 업체와 다릅니다.</h2>
+          <p class="desc">장비를 파는 회사가 아니라,<br><strong>구조를 바꾸는 회사</strong>입니다.</p>
+        </div>
+
+        <div class="content-container">
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>구분</th>
+                  <th>일반 로봇 업체</th>
+                  <th class="highlight">우리</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>장비 판매</td>
+                  <td class="yes">○</td>
+                  <td class="no">✕</td>
+                </tr>
+                <tr>
+                  <td>구조 설계</td>
+                  <td class="no">✕</td>
+                  <td class="yes">○</td>
+                </tr>
+                <tr>
+                  <td>정부지원 연계</td>
+                  <td class="no">✕</td>
+                  <td class="yes">○</td>
+                </tr>
+                <tr>
+                  <td>구축 후 운영 책임</td>
+                  <td class="no">✕</td>
+                  <td class="yes">○</td>
+                </tr>
+                <tr>
+                  <td>ROI 설계</td>
+                  <td class="no">✕</td>
+                  <td class="yes">○</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="cta-inline">
+            <a href="#cta" class="btn primary">무료 진단 신청하기</a>
+            <p class="cta-note">진단 후 의무 계약 없음</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         Section 7: Proof (Stats + Cases) + CTA 2
+         ======================================== -->
+    <section id="proof" class="section-proof">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">이미 검증되었습니다.</h2>
+          <p class="desc">현재 운영 중인 시스템 기준입니다.</p>
+        </div>
+
+        <div class="content-container">
+          <!-- Stats -->
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">12,500<span style="font-size: 20px;">㎡</span></div>
+              <div class="stat-label">누적 운영 면적</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">24,000<span style="font-size: 20px;">h</span></div>
+              <div class="stat-label">누적 운영 시간</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">8.2<span style="font-size: 20px;">개월</span></div>
+              <div class="stat-label">평균 ROI 회수</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">7<span style="font-size: 20px;">개</span></div>
+              <div class="stat-label">적용 업종</div>
+            </div>
+          </div>
+
+          <!-- Cases -->
+          <div class="case-grid">
+            <div class="case-card">
+              <div class="case-tag">제조업</div>
+              <h3 class="case-title">금속가공 공장 자재 이송 자동화</h3>
+              <div class="case-detail">
+                <p class="case-label">전환 대상</p>
+                <p class="case-value">A→B 반복 이송 작업</p>
+              </div>
+              <div class="case-detail">
+                <p class="case-label">결과</p>
+                <p class="case-value">이송 인력 3명 → 1명, 야간 무인 운영</p>
+              </div>
+              <div class="case-detail">
+                <p class="case-label">ROI</p>
+                <p class="case-value">7개월</p>
+              </div>
+            </div>
+
+            <div class="case-card">
+              <div class="case-tag">병원</div>
+              <h3 class="case-title">종합병원 물류 배송 자동화</h3>
+              <div class="case-detail">
+                <p class="case-label">전환 대상</p>
+                <p class="case-value">층간 물류 이송 (야간/주말)</p>
+              </div>
+              <div class="case-detail">
+                <p class="case-label">결과</p>
+                <p class="case-value">배송 인력 2명 재배치, 의료진 만족도 상승</p>
+              </div>
+              <div class="case-detail">
+                <p class="case-label">ROI</p>
+                <p class="case-value">9개월</p>
+              </div>
+            </div>
+
+            <div class="case-card">
+              <div class="case-tag">물류</div>
+              <h3 class="case-title">물류센터 분류 시스템 구축</h3>
+              <div class="case-detail">
+                <p class="case-label">전환 대상</p>
+                <p class="case-value">박스 분류 (크기/무게 기준)</p>
+              </div>
+              <div class="case-detail">
+                <p class="case-label">결과</p>
+                <p class="case-value">분류 오류율 4.2% → 0.8%</p>
+              </div>
+              <div class="case-detail">
+                <p class="case-label">ROI</p>
+                <p class="case-value">10개월</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="note">* 실제 운영 데이터 기준, NDA에 따라 일부 정보는 블라인드 처리</p>
+
+          <div class="cta-inline">
+            <a href="#cta" class="btn primary">우리 현장도 가능한지 확인하기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         Section 8: FAQ + CTA 3
+         ======================================== -->
+    <section id="faq" class="section-faq">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">자주 묻는 질문</h2>
+        </div>
+
+        <div class="content-container">
+          <div class="faq-list">
+            <div class="faq-item">
+              <div class="faq-question">비용 많이 드나요?</div>
+              <div class="faq-answer">
+                <p>진단은 무료입니다. 이후 비용은 정부지원 연계 여부에 따라 크게 달라집니다. 자부담 30% 이하도 가능합니다. 진단 후 정확한 비용 구조를 안내해드립니다.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">우리 규모가 작아도 되나요?</div>
+              <div class="faq-answer">
+                <p>규모보다 업무 구조가 중요합니다. 반복 업무가 있다면 검토 대상입니다. 소규모 사업장도 정부지원 대상에 포함되는 경우가 많습니다.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">정부지원 정말 받을 수 있나요?</div>
+              <div class="faq-answer">
+                <p>네, 가능합니다. 스마트공장, 로봇실증, 서비스로봇 등 다양한 지원사업이 있습니다. 신청부터 심사까지 저희가 함께 진행합니다.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">사람 다 없어지나요?</div>
+              <div class="faq-answer">
+                <p>아닙니다. 반복 업무를 줄여 더 중요한 일에 집중하게 합니다. 재배치와 역할 전환을 함께 설계합니다. 사람을 대체하는 것이 아니라, 사람이 더 가치 있는 일을 하게 만드는 것입니다.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">실패하면 어떡하죠?</div>
+              <div class="faq-answer">
+                <p>진단에서 가능성을 먼저 확인합니다. 파일럿으로 작은 범위부터 시작하여 효과 확인 후 확장합니다. 단계별 진행이라 리스크가 최소화됩니다.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">유지관리는 누가 하나요?</div>
+              <div class="faq-answer">
+                <p>저희가 책임집니다. 정기 점검, 장애 대응, 시스템 개선을 운영 계약에 포함합니다. 설치하고 떠나지 않습니다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-inline">
+            <a href="#cta" class="btn primary">무료 진단 신청하기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         Section 9: Guarantee (New)
+         ======================================== -->
+    <section id="guarantee" class="section-guarantee">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">부담 없이 시작하세요.</h2>
+        </div>
+
+        <div class="content-container">
+          <div class="guarantee-grid">
+            <div class="guarantee-card">
+              <div class="icon">✓</div>
+              <h3 class="cardtitle">무료 진단</h3>
+              <p class="carddesc">현장 방문 1~2시간<br>비용 0원</p>
+            </div>
+
+            <div class="guarantee-card">
+              <div class="icon">✓</div>
+              <h3 class="cardtitle">의무 계약 없음</h3>
+              <p class="carddesc">진단 후 진행 여부는<br>귀사가 결정</p>
+            </div>
+
+            <div class="guarantee-card">
+              <div class="icon">✓</div>
+              <h3 class="cardtitle">단계별 진행</h3>
+              <p class="carddesc">파일럿 → 검증 → 확장<br>중간에 멈출 수 있음</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         Section 10: Final CTA
+         ======================================== -->
+    <section id="cta" class="section-cta">
+      <div class="container">
+        <div class="text-container">
+          <h2 class="title">지금, 전환 가능성부터 확인하세요.</h2>
+          <p class="desc">로봇이 필요한지 아닌지가 아니라,<br><strong>구조가 바뀔 수 있는지</strong>부터 봅니다.</p>
+        </div>
+
+        <div class="content-container">
+          <form class="contact-form" id="contactForm">
+            <input type="hidden" id="form_type" value="robot" />
+
+            <div class="form-row">
+              <input type="text" id="name" name="name" placeholder="회사명 또는 성함" required aria-label="회사명 또는 성함">
+            </div>
+            <div class="form-row">
+              <input type="tel" id="phone" name="phone" placeholder="연락처 (휴대폰)" required aria-label="연락처">
+            </div>
+            <div class="form-row">
+              <textarea id="msg" name="message" rows="4" placeholder="문의 내용" required aria-label="문의 내용"></textarea>
+            </div>
+
+            <div class="form-check">
+              <label>
+                <input type="checkbox" id="privacy_yn" name="privacy_yn" required>
+                <span>개인정보 수집 및 이용에 동의합니다</span>
+              </label>
+            </div>
+            <button type="submit" class="btn primary large">무료 진단 신청하기</button>
+          </form>
+
+          <div class="cta-info">
+            <p>· 진단 소요 시간: 현장 방문 1~2시간</p>
+            <p>· 진단 비용: 무료</p>
+            <p>· 진단 후 의무 계약: 없음</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Include -->
+  <div id="footer"></div>
+
+  <!-- Mobile Fixed CTA -->
+  <div class="mobile-fixed-cta" id="mobileFixedCta">
+    <a href="#cta" class="btn primary">무료 진단 신청하기</a>
+  </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/index.js"></script>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const msg = document.getElementById('msg');
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          msg.textContent = '';
+
+          const payload = {
+            form_type: document.getElementById('form_type').value,
+            name: document.getElementById('name').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            message: document.getElementById('message').value.trim()
+          };
+
+          if (!payload.name || !payload.phone || !payload.message) {
+            msg.textContent = '모든 항목을 입력해 주세요.';
+            return;
+          }
+
+          try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+
+            const data = await res.json();
+            if (data.ok) {
+              msg.textContent = '신청이 정상적으로 접수되었습니다.';
+              form.reset();
+            } else {
+              msg.textContent = '오류가 발생했습니다: ' + (data.error || '');
+            }
+          } catch (err) {
+            msg.textContent = '네트워크 오류가 발생했습니다.';
+          }
+        });
+    </script>
 </body>
 </html>
