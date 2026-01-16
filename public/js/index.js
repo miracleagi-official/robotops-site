@@ -119,12 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      const companyInput = this.querySelector('input[name="company"]');
+      const companyInput = this.querySelector('input[name="name"]');
       const phoneInput = this.querySelector('input[name="phone"]');
-      const privacyCheck = this.querySelector('input[name="privacy"]');
+      const messageInput = this.querySelector('textarea[name="message"]');
+      const privacyCheck = this.querySelector('input[name="privacy_yn"]');
 
       // Validation
       let isValid = true;
@@ -148,6 +149,12 @@ document.addEventListener('DOMContentLoaded', function() {
         errorMessage = '올바른 연락처 형식을 입력해주세요.';
         phoneInput.focus();
       }
+      // Message validation
+      else if (!messageInput.value.trim()) {
+        isValid = false;
+        errorMessage = '문의 내용을 입력해주세요.';
+        messageInput.focus();
+      }
       // Privacy agreement validation
       else if (!privacyCheck.checked) {
         isValid = false;
@@ -161,23 +168,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Form data
       const formData = {
-        company: companyInput.value.trim(),
+        name: companyInput.value.trim(),
         phone: phoneInput.value.trim(),
+        message: messageInput.value.trim(),
         timestamp: new Date().toISOString()
       };
 
       console.log('Form submitted:', formData);
 
-      // Success feedback
-      alert('신청이 완료되었습니다.\n담당자가 빠른 시일 내에 연락드리겠습니다.');
+      // Send to API
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            form_type: 'robot',
+            name: formData.name,
+            phone: formData.phone,
+            message: formData.message
+          })
+        });
 
-      // Reset form
-      this.reset();
-
-      // Here you would typically send the data to a server
-      // Example:
-      // fetch('/api/contact', {
-      //   method: 'POST',
+        const data = await response.json();
+        if (data.ok) {
+          alert('신청이 완료되었습니다.\n담당자가 빠른 시일 내에 연락드리겠습니다.');
+          this.reset();
+        } else {
+          alert('오류가 발생했습니다: ' + (data.error || ''));
+        }
+      } catch (err) {
+        alert('네트워크 오류가 발생했습니다.');
+      }
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify(formData)
       // });
